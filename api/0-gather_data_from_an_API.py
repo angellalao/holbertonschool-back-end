@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""This script retrieves and processes data from the JSONPlaceholder API to
+ gather information about an employee's tasks. """
 import requests
 import sys
 
