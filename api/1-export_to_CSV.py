@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """export data from api to CSV file """
+import csv
 import requests
 import sys
-import csv
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     task_list = []
     for task in list_of_todos:
         task_info = {
-            'USER_ID': input_id,
+            'USER_ID': str(input_id),
             'USERNAME': USERNAME,
             'TASK_COMPLETED_STATUS': task.get('completed'),
             'TASK_TITLE': task.get('title')
@@ -55,7 +55,8 @@ if __name__ == "__main__":
 
     filename = input_id + ".csv"
     with open(filename, 'w', newline='') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=["USER_ID", "USERNAME",
-                                                     "TASK_COMPLETED_STATUS",
-                                                     "TASK_TITLE"])
+        fieldnames = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS",
+                      "TASK_TITLE"]
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quotechar='"',
+                                quoting=csv.QUOTE_ALL)
         writer.writerows(task_list)
