@@ -30,7 +30,7 @@ if __name__ == "__main__":
     # number of tasks completed for employee
     completed_tasks = []
     for todo in list_of_todos:
-        if todo.get('completed') == True:
+        if todo.get('completed') is True:
             completed_tasks.append(todo)
     NUMBER_OF_DONE_TASKS = len(completed_tasks)
 
