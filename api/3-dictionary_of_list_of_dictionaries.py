@@ -15,7 +15,6 @@ if __name__ == "__main__":
     employee_info = response.json()
 
     todo_dict = {}
-    
     for employee in employee_info:
         user_id = str(employee.get('id'))
         username = employee.get('username')
@@ -33,6 +32,6 @@ if __name__ == "__main__":
             }
             task_list.append(task_info)
             todo_dict[user_id] = task_list
-            
+
             with open("todo_all_employees.json", 'w') as write_file:
                 json.dump(todo_dict, write_file)
